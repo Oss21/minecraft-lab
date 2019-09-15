@@ -1,4 +1,6 @@
-package model;
+package dataStructure;
+
+import interfaces.IQueue;
 
 public class Queue<T> implements IQueue<T> {
 

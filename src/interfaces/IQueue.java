@@ -1,4 +1,6 @@
-package model;
+package interfaces;
+
+import dataStructure.Stack;
 
 public interface IQueue<T> {
 

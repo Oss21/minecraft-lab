@@ -1,6 +1,6 @@
-package model;
+package interfaces;
 
-import exceptions.HashTableException;
+import CustomExceptions.HashTableException;
 
 public interface IHashMap<K,V> {
 

@@ -1,25 +1,19 @@
 package model;
 
+import dataStructure.Stack;
+
 public class Box {
 
-    private String type;
+    public static final int CAPACITY = 64;
 
+    private Stack<Block<String>> blocks;
 
-
-    public Box(String type){
-        this.type= type;
+    public Box() {
+        blocks = new Stack<>();
     }
 
+    public void addBlocks(){
 
-
-    public String getType() {
-        return type;
     }
-
-    public void setType(String type) {
-        this.type = type;
-    }
-
-
 
 }
