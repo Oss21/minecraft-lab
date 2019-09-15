@@ -1,12 +1,15 @@
 package model;
 
-public interface IStack<V> {
+public interface IStack<T> {
 
     public boolean isEmpty();
-    public int getSize();
-    public void setSize(int size);
-    public void push(Node<V> node);
-    public Node<V> peek();
-    public Node<V> pop();
 
+    public void push(T item);
+
+    public T top() throws StackException;
+
+    public T pop() throws StackException;
+
+    public int size();
 }
+

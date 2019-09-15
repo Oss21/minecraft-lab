@@ -3,19 +3,18 @@ package model;
 import exceptions.HashTableException;
 
 import java.util.ArrayList;
-import java.util.Hashtable;
 
 public class HashTable<K,V> implements IHashMap<K,V>{
 
     public final static int HASH_TABLE_SIZE = 27;
 
-    private ArrayList<NodeKey<K,V>> table;
-    private NodeKey<K,V> deleted;
+    private ArrayList<CubeKey<K,V>> table;
+    private CubeKey<K,V> deleted;
     private int primeNumber;
 
     public HashTable(){
         table = new ArrayList<>(HASH_TABLE_SIZE);
-        deleted = new NodeKey<>(null, null);
+        deleted = new CubeKey<>(null, null);
 
         for (int i = 0; i < HASH_TABLE_SIZE; i++) {
             table.add(null);
@@ -30,7 +29,7 @@ public class HashTable<K,V> implements IHashMap<K,V>{
         for (int i = 0; i < HASH_TABLE_SIZE && !stop; i++) {
             int j = hash(key, i);
             if (table.get(j) == null || table.get(j) == deleted){
-                table.set(j, new NodeKey<K,V>(key, value));
+                table.set(j, new CubeKey<K,V>(key, value));
                 stop = true;
             }
         }
@@ -50,7 +49,7 @@ public class HashTable<K,V> implements IHashMap<K,V>{
                 stop = true;
 
             }else if (table.get(j) != null && table.get(j).getKey().equals(key)){
-                value = table.get(j).getValue();
+                value = table.get(j).getTypeCube();
                 stop = true;
             }
         }

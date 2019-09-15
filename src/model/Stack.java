@@ -1,49 +1,51 @@
 package model;
 
-public class Stack<V> implements IStack<V>{
+public class Stack<T> implements IStack<T>{
 
+    private Cube<T> top;
     private int size;
-    public Node<V> nodeTop;
 
-    public Stack(){
-        nodeTop = null;
+    public Stack() {
+        top = null;
         size = 0;
     }
 
-
     @Override
     public boolean isEmpty() {
-        boolean isEmpty = true;
-
-        if (nodeTop != null){
-            isEmpty = false;
-        }
-
-        return isEmpty;
+        return top == null;
     }
 
     @Override
-    public int getSize() {
+    public void push(T typeCube) {
+        Cube<T> newCube= new Cube<>(typeCube);
+        newCube.setNext(top);
+        top = newCube;
+        size++;
+    }
+
+    @Override
+    public T top() throws StackException {
+        if(!isEmpty()) {
+            return top.getTypeCube();
+        } else {
+            throw new StackException("Cannot get top from an empty stack");
+        }
+    }
+
+    @Override
+    public T pop() throws StackException {
+        if(!isEmpty()) {
+            Cube<T> toRemove = top;
+            top = toRemove.getNext();
+            return toRemove.getTypeCube();
+        } else {
+            throw new StackException("Trying to get top from an empty stack");
+        }
+
+    }
+
+    public int size() {
         return size;
     }
 
-    @Override
-    public void setSize(int size) {
-        this.size = size;
-    }
-
-    @Override
-    public void push(Node<V> node) {
-
-    }
-
-    @Override
-    public Node<V> peek() {
-        return null;
-    }
-
-    @Override
-    public Node<V> pop() {
-        return null;
-    }
 }
