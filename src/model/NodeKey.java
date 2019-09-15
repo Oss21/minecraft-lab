@@ -1,11 +1,13 @@
 package model;
 
-public class NodeKey<K,T> {
+public class NodeKey<K,V> extends Node<V>{
 
     private K key;
-    private T type;
+    private V value;
 
-    public NodeKey(K key, T type){}
+    public NodeKey(K key, V type){
+
+    }
 
 
     public K getKey() {
@@ -16,11 +18,11 @@ public class NodeKey<K,T> {
         this.key = key;
     }
 
-    public T getType() {
-        return type;
+    public V getValue() {
+        return value;
     }
 
-    public void setType(T type) {
-        this.type = type;
+    public void setValue(V type) {
+        this.value = type;
     }
 }

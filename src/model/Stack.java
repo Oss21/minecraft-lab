@@ -1,40 +1,49 @@
 package model;
 
-public class Stack<T> implements IStack<T>{
+public class Stack<V> implements IStack<V>{
 
     private int size;
-    public Node<T> nodeTop;
+    public Node<V> nodeTop;
 
-    public Stack(){}
+    public Stack(){
+        nodeTop = null;
+        size = 0;
+    }
 
 
     @Override
     public boolean isEmpty() {
-        return false;
+        boolean isEmpty = true;
+
+        if (nodeTop != null){
+            isEmpty = false;
+        }
+
+        return isEmpty;
     }
 
     @Override
     public int getSize() {
-        return 0;
+        return size;
     }
 
     @Override
     public void setSize(int size) {
+        this.size = size;
+    }
+
+    @Override
+    public void push(Node<V> node) {
 
     }
 
     @Override
-    public void push(Node<T> node) {
-
-    }
-
-    @Override
-    public Node<T> peek() {
+    public Node<V> peek() {
         return null;
     }
 
     @Override
-    public Node<T> pop() {
+    public Node<V> pop() {
         return null;
     }
 }
