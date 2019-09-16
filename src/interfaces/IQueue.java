@@ -1,16 +1,13 @@
 package interfaces;
 
-import dataStructure.Stack;
+import CustomExceptions.QueueException;
 
 public interface IQueue<T> {
 
-    public void add(Stack<T> quickAccessBar );
-    public Stack<T> peek();
-    public Stack<T> poll();
-    public void remove();
+    public void enqueue( T element);
+    public T dequeue() throws QueueException;
+    public void advanceInQueue() throws QueueException;
     public boolean isEmpty();
-    public int getSize();
-    public void setSize(int size);
 
 
 }

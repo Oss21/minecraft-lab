@@ -19,7 +19,6 @@ public class Stack<T> implements IStack<T> {
         if (top == null){
             isEmpty = true;
         }
-
         return isEmpty;
     }
 

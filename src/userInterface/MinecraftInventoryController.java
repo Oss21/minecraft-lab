@@ -2,6 +2,7 @@ package userInterface;
 
 import CustomExceptions.BlankFieldException;
 import CustomExceptions.HashTableException;
+import CustomExceptions.QueueException;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.fxml.FXML;
@@ -37,14 +38,12 @@ public class MinecraftInventoryController implements Initializable {
         game = new Game();
     }
 
-
-
     @FXML
     void addCubeClicked(ActionEvent event) {
 
         try {
             int number = Integer.parseInt(numberCubesTXT.getText());
-            game.addBlockToInventory(typeCubeTXT.getText(), number);
+            game.addBlocksToInventory(typeCubeTXT.getText(), number);
 
         }catch (NumberFormatException e){
             Alert alert = new Alert(Alert.AlertType.ERROR, "Causado por: \n" + "Caracteres invalidos" + ButtonType.CLOSE);
@@ -61,13 +60,17 @@ public class MinecraftInventoryController implements Initializable {
 
     @FXML
     void nextBarClicked(ActionEvent event) {
-
+        try {
+            game.advanceInqueue();
+        } catch (QueueException e) {
+            Alert alert = new Alert(Alert.AlertType.ERROR, "Causado por: \n" + "La cola está vacía " + ButtonType.CLOSE);
+            alert.setHeaderText("Debe crear una barra de acceso rápido antes.");
+            alert.show();
+        }
     }
 
-    @FXML
-    void previousBarClicked(ActionEvent event) {
-
-    }
+   // @FXML
+   // void previousBarClicked(ActionEvent event) { }
 
     @FXML
     void useCubeClicked(ActionEvent event) {

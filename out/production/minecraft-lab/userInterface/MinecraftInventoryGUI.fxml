@@ -86,7 +86,7 @@
                               </GridPane>
                               <ImageView fitHeight="150.0" fitWidth="69.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../../images/Steve.png" />
+                                    <Image url="@../../../../resourses/images/Steve.png" />
                                  </image>
                               </ImageView>
                            </children>
@@ -164,7 +164,7 @@
                      <children>
                         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="531.0" spacing="10.0">
                            <children>
-                              <Button mnemonicParsing="false" onAction="#previousBarClicked" prefHeight="52.0" prefWidth="52.0" text="&lt;--" />
+                              <Button disable="true" mnemonicParsing="false" opacity="0.0" prefHeight="52.0" prefWidth="52.0" text="&lt;--" />
                               <Pane prefHeight="100.0" prefWidth="427.0">
                                  <children>
                                     <GridPane fx:id="quickAccessBar" gridLinesVisible="true" hgap="2.0" layoutX="-1.0" layoutY="20.0" prefHeight="50.0" prefWidth="422.0" style="-fx-background-color: Dimgray;" vgap="2.0">
