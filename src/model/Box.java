@@ -12,8 +12,8 @@ public class Box {
         blocks = new Stack<>();
     }
 
-    public void addBlocks(){
-
+    public void addBlocks(Block block){
+        blocks.push(block);
     }
 
 }

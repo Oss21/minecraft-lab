@@ -9,7 +9,7 @@ import dataStructure.Stack;
 
 public class Game {
 
-    private HashTable<Integer, Box> inventory;
+    private HashTable<Long, Box> inventory;
     private Queue<Stack<Block>> quickAccessBarList;
 
     public Game() {
@@ -21,10 +21,19 @@ public class Game {
         if (!type.equals("")) {
             int counter = 0;
             Box box = null;
+            long key = calculateKey(type);
 
             while (amount > 0) {
                 if (counter == 0) {
                     box = new Box();
+                }
+                Block<String> block = new Block<>(type);
+                box.addBlocks(block);
+
+                counter ++;
+                if (counter > 64){
+                    counter = 0;
+                    inventory.insert(key, box);
                 }
                 amount--;
             }
@@ -39,14 +48,28 @@ public class Game {
     }
 
 
-    public void creatQuickAccessBar( Block typeBlock){
-
-        Stack<Block> toAdd = new Stack<>();
+    public void creatQuickAccessBar( Box typeBlock){
+        Stack<Box> toAdd = new Stack<>();
 
         toAdd.push(typeBlock);
-
-
     }
 
+    private long calculateKey(String type){
+        int base = 26;
+        long n = 0;
+        long k = 0;
+        int[] values = new int[type.length()];
 
+        for (int i = 0; i < type.length(); i++) {
+            values[i] = (int) type.charAt(0);
+        }
+
+        for (int i = values.length - 1; i >= 0; i--) {
+            for (int j = i; j > 0; j--) {
+                n *= base;
+            }
+            k += (values[i]*n);
+        }
+        return k;
+    }
 }

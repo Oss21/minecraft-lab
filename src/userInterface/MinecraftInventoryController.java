@@ -69,9 +69,6 @@ public class MinecraftInventoryController implements Initializable {
         }
     }
 
-   // @FXML
-   // void previousBarClicked(ActionEvent event) { }
-
     @FXML
     void useCubeClicked(ActionEvent event) {
 
