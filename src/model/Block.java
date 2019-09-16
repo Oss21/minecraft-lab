@@ -1,7 +1,6 @@
 package model;
 
 public class Block<T> {
-
     private T typeBlock;
 
     public Block(T typeBlock){

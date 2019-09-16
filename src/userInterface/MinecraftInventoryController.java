@@ -60,6 +60,7 @@ public class MinecraftInventoryController implements Initializable {
 
     @FXML
     void nextBarClicked(ActionEvent event) {
+        /*
         try {
             game.advanceInqueue();
         } catch (QueueException e) {
@@ -67,10 +68,19 @@ public class MinecraftInventoryController implements Initializable {
             alert.setHeaderText("Debe crear una barra de acceso rápido antes.");
             alert.show();
         }
+
+ */
     }
+
+    @FXML
+    void previousBarClicked(ActionEvent event) { }
 
     @FXML
     void useCubeClicked(ActionEvent event) {
 
     }
+
+
+
+
 }
