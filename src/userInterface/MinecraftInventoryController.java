@@ -61,7 +61,8 @@ public class MinecraftInventoryController implements Initializable {
     @FXML
     void nextBarClicked(ActionEvent event) {
         try {
-            game.advanceInqueue();
+            game.advanceInQueue();
+
         } catch (QueueException e) {
             Alert alert = new Alert(Alert.AlertType.ERROR, "Causado por: \n" + "La cola está vacía " + ButtonType.CLOSE);
             alert.setHeaderText("Debe crear una barra de acceso rápido antes.");

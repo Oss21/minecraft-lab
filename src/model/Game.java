@@ -37,13 +37,14 @@ public class Game {
                 }
                 amount--;
             }
+            inventory.insert(key, box);
 
         } else {
             throw new BlankFieldException();
         }
     }
 
-    public void advanceInqueue() throws QueueException {
+    public void advanceInQueue() throws QueueException {
         quickAccessBarList.advanceInQueue();
     }
 
@@ -61,14 +62,21 @@ public class Game {
         int[] values = new int[type.length()];
 
         for (int i = 0; i < type.length(); i++) {
-            values[i] = (int) type.charAt(0);
+            values[i] = (int) type.charAt(i);
         }
 
         for (int i = values.length - 1; i >= 0; i--) {
             for (int j = i; j > 0; j--) {
-                n *= base;
+                if (n == 0){
+                    n = base;
+
+                }else {
+                    n = n*base;
+                }
+
             }
-            k += (values[i]*n);
+            k = k + (values[i]*n);
+            n = 0;
         }
         return k;
     }

@@ -11,7 +11,6 @@ public class HashTable<K,V> implements IHashMap<K,V> {
 
     private ArrayList<NodeKey<K,V>> table;
     private NodeKey<K,V> deleted;
-    private int primeNumber;
 
     public HashTable(){
         table = new ArrayList<>(HASH_TABLE_SIZE);
@@ -20,7 +19,6 @@ public class HashTable<K,V> implements IHashMap<K,V> {
         for (int i = 0; i < HASH_TABLE_SIZE; i++) {
             table.add(null);
         }
-        primeNumber = findPrime();
     }
 
     @Override
@@ -36,6 +34,10 @@ public class HashTable<K,V> implements IHashMap<K,V> {
         }
         if (!stop){
             throw new HashTableException();
+        }
+
+        for (int i = 0; i < table.size(); i++) {
+            System.out.println(table.get(i));
         }
     }
 
@@ -78,35 +80,21 @@ public class HashTable<K,V> implements IHashMap<K,V> {
     }
 
     private int hash1(K key){
-        return Math.abs(key.hashCode()) % table.size();
+        int toReturn = 0;
+        double n1 = key.hashCode()*0.618;
+        double n2 = n1 % 1;
+
+        double n3  = Math.floor(table.size()*n2);
+        toReturn = (int) n3;
+
+        return toReturn;
     }
 
     private int hash2(K key){
-        return 1+(key.hashCode() % primeNumber);
-    }
+        int toReturn = 0;
 
-    private int findPrime() {
-        int prime = 1;
-        boolean found = false;
-        for (int i = table.size() - 1; i > 2 && !found; i--) {
-            found = isPrime(i);
-            if (found)
-                prime = i;
-        }
-        return prime;
-    }
+        toReturn = key.hashCode() % table.size();
 
-    private boolean isPrime(int numb) {
-        boolean isPrime = true;
-        if (numb < 2) {
-            isPrime = false;
-        } else {
-            for (int i = 2; i * i <= numb && isPrime; i++) {
-                if (numb % i == 0) {
-                    isPrime = false;
-                }
-            }
-        }
-        return isPrime;
+        return toReturn;
     }
 }

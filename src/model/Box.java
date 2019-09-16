@@ -1,5 +1,6 @@
 package model;
 
+import CustomExceptions.StackEmptyException;
 import dataStructure.Stack;
 
 public class Box {
@@ -14,6 +15,10 @@ public class Box {
 
     public void addBlocks(Block block){
         blocks.push(block);
+    }
+
+    public void deleteBlocks() throws StackEmptyException {
+        blocks.pop();
     }
 
 }
